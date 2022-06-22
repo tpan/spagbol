@@ -22,28 +22,23 @@ const Home = (props) => {
         </h1>
         <p className='mt-2'>Enter a few ingredients and I'll tell you what's for dinner! 👨🏻‍🍳</p>
       
-      <div className="mt-5 flex justify-between">
-        <p className="underline font-bold">
-        </p>
-      </div>
-
       <div className="mt-4 text-left rounded-lg bg-slate-600 text-white p-5">
-        <pre className="w-10">
+        <pre className="whitespace-pre-line">
           {recipeString}
         </pre>
       </div>
       <textarea className='border border-solid border-black rounded-xl outline-none p-5' style={{ minHeight: 120 }}
             rows={1 + (ingredientText.split('\n').length)}
             value={ingredientText} onChange={(evt) => setIngredientText(evt.target.value)}
-            placeholder={'Strawberries\nPasta\nCilantro'}>
+            placeholder={'Gochujang\nChicken\nYogurt'}>
       </textarea>
 
       <button className='speech-bubble-button'
             onClick={() => {
               if (ingredientText) {
                 const ingredients = ingredientText.split('\n');
-                if (ingredients.length < 2) {
-                  setErrorMessage('Please enter at least 2 ingredients.');
+                if (ingredients.length < 3) {
+                  setErrorMessage('Please enter at least 3 ingredients.');
                   return;
                 }
 
@@ -51,9 +46,7 @@ const Home = (props) => {
                 axios.post('/api/generate-recipe', { ingredients })
                   .then(response => {
                     setLoading(false);
-                    console.log(recipeString)
                     setRecipeString(JSON.stringify(response.data, null, 2))
-                    console.log(recipeString)
                     setErrorMessage('');
                   })
                   .catch(error => {
