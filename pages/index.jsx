@@ -1,10 +1,7 @@
-import type { NextPage } from 'next'
 import Link from 'next/link'
-import Head from 'next/head'
-import Image from 'next/image'
 import { getRecipe } from '../util/getRecipe'
 
-const Home: NextPage = (props) => {
+const Home = (props) => {
 
   const { recipe } = props
 
