@@ -27,13 +27,13 @@ const Home = (props) => {
           {recipeString}
         </pre>
       </div>
-      <textarea className='border border-solid border-black rounded-xl outline-none p-5' style={{ minHeight: 120 }}
+      <textarea className='border border-solid border-black rounded-xl outline-none p-5 mt-2' style={{ minHeight: 120 }}
             rows={1 + (ingredientText.split('\n').length)}
             value={ingredientText} onChange={(evt) => setIngredientText(evt.target.value)}
             placeholder={'Gochujang\nChicken\nYogurt'}>
       </textarea>
 
-      <button className='speech-bubble-button'
+      <button className='p-4 rounded-lg bg-orange text-black mt-4 mb-8 shadow-lg text-xl font-bold'
             onClick={() => {
               if (ingredientText) {
                 const ingredients = ingredientText.split('\n');
